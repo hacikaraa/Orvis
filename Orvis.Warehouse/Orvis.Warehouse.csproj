@@ -94,6 +94,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Base\" />
+    <Folder Include="Catalog\" />
+    <Folder Include="Corporation\" />
+    <Folder Include="Finance\" />
+    <Folder Include="Framework\" />
+    <Folder Include="Member\" />
+    <Folder Include="Stock\" />
+    <Folder Include="Trading\Purchase\" />
+    <Folder Include="Trading\Sales\" />
+    <Folder Include="Transportation\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

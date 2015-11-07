@@ -40,7 +40,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Base\Entity.cs" />
+    <Compile Include="Application\Catalog\Facade.cs" />
+    <Compile Include="Application\Corporation\Facade.cs" />
+    <Compile Include="Application\Finance\Facade.cs" />
+    <Compile Include="Application\Framework\Facade.cs" />
+    <Compile Include="Application\Member\Facade.cs" />
+    <Compile Include="Application\Reporter\Facade.cs" />
+    <Compile Include="Application\Stock\Facade.cs" />
+    <Compile Include="Application\Trading\Facade.cs" />
+    <Compile Include="Application\Trading\Purchase\Facade.cs" />
+    <Compile Include="Application\Trading\Sales\Facade.cs" />
+    <Compile Include="Application\Transportation\Facade.cs" />
+    <Compile Include="Data\Facade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Facade.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\Base\" />
+    <Folder Include="View\Catalog\" />
+    <Folder Include="View\Corporation\" />
+    <Folder Include="View\Finance\" />
+    <Folder Include="View\Framework\" />
+    <Folder Include="View\Member\" />
+    <Folder Include="View\Stock\" />
+    <Folder Include="View\Trading\Purchase\" />
+    <Folder Include="View\Trading\Sales\" />
+    <Folder Include="View\Transportation\" />
+    <Folder Include="_DLL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

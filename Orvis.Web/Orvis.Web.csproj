@@ -113,6 +113,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Catalog\" />
+    <Folder Include="Views\Corporation\" />
+    <Folder Include="Views\Finance\" />
+    <Folder Include="Views\Framework\" />
+    <Folder Include="Views\Member\" />
+    <Folder Include="Views\Stock\" />
+    <Folder Include="Views\Trading\Purchase\" />
+    <Folder Include="Views\Trading\Sales\" />
+    <Folder Include="Views\Transportation\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

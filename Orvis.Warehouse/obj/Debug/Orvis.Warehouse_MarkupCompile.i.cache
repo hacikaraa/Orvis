@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Orvis\Orvis.Warehouse\obj\Debug\
+C:\GIT\Orvis\Orvis.Warehouse\obj\Debug\
 Orvis.Warehouse
 none
 false
 DEBUG;TRACE
-D:\Orvis\Orvis.Warehouse\App.xaml
+C:\GIT\Orvis\Orvis.Warehouse\App.xaml
 11151548125
 
 91979693084
 13-1142990016
 MainWindow.xaml;
 
-False
+True
 
