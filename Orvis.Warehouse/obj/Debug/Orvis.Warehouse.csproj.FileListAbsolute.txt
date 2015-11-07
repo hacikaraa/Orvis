@@ -12,3 +12,17 @@ C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Wa
 C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.csproj.GenerateResource.Cache
 C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.exe
 C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.pdb
+C:\GIT\Orvis\Orvis.Warehouse\bin\Debug\Orvis.Warehouse.exe.config
+C:\GIT\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.exe
+C:\GIT\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.pdb
+C:\GIT\Orvis\Orvis.Warehouse\bin\Debug\Orvis.Warehouse.exe
+C:\GIT\Orvis\Orvis.Warehouse\bin\Debug\Orvis.Warehouse.pdb
+C:\GIT\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.csprojResolveAssemblyReference.cache
+C:\GIT\Orvis\Orvis.Warehouse\obj\Debug\MainWindow.g.cs
+C:\GIT\Orvis\Orvis.Warehouse\obj\Debug\App.g.cs
+C:\GIT\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse_MarkupCompile.cache
+C:\GIT\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse_MarkupCompile.lref
+C:\GIT\Orvis\Orvis.Warehouse\obj\Debug\MainWindow.baml
+C:\GIT\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.g.resources
+C:\GIT\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.Properties.Resources.resources
+C:\GIT\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.csproj.GenerateResource.Cache
