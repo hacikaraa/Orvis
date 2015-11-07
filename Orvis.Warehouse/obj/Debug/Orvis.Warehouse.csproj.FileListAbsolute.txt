@@ -1,0 +1,14 @@
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\bin\Debug\Orvis.Warehouse.exe.config
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\bin\Debug\Orvis.Warehouse.exe
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\bin\Debug\Orvis.Warehouse.pdb
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.csprojResolveAssemblyReference.cache
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\MainWindow.g.cs
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\App.g.cs
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse_MarkupCompile.cache
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse_MarkupCompile.lref
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\MainWindow.baml
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.g.resources
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.Properties.Resources.resources
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.csproj.GenerateResource.Cache
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.exe
+C:\Users\Hacı KARAARSLAN\Desktop\Orvis\Orvis\Orvis.Warehouse\obj\Debug\Orvis.Warehouse.pdb
