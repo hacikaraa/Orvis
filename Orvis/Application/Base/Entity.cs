@@ -6,7 +6,56 @@ using System.Threading.Tasks;
 
 namespace Orvis.Application.Base
 {
-    class Entity
+    public abstract class Entity
     {
+        public Entity()
+        {
+            this.HasName = true;
+            this.HasDateCreated = true;
+            this.HasDateUpdated = true;
+            this.HasUserCreated = true;
+            this.HasUserUpdated = true;
+            this.Configuration();
+        }
+
+        public int ID { get; set; }
+
+        public string Name { get; set; }
+
+        public int UserCreated { get; set; }
+
+        public int UserUpdated { get; set;}
+
+        public DateTime DateCreated { get; set; }
+
+        public DateTime DateUpdated { get; set; }
+
+        string table_name = "";
+        public string DB_TableName
+        {
+            get
+            {
+                if (table_name == "")
+                {
+                    string[] labels = this.GetType().FullName.Split('.');
+                    for (int i = 2; i < labels.Length; i++)
+                    {
+                        table_name += labels[i];
+                        if (i != labels.Length - 1)
+                            table_name += "_";
+                    }
+                }
+                return table_name;
+            }
+        }
+
+        public abstract void Configuration();
+
+        public bool HasName { get; set; }
+        public bool HasUserCreated { get; set; }
+        public bool HasUserUpdated { get; set; }
+        public bool HasDateCreated { get; set; }
+        public bool HasDateUpdated { get; set; }
+
     }
 }
