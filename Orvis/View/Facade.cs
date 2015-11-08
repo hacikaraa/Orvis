@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orvis.Application.Catalog
+namespace Orvis.View
 {
     class Facade
     {
