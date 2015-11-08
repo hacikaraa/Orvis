@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Orvis.Application.Base
 {
-    public class DataAction
+    public partial class DataAction
     {
         private Data.Query oQuery;
         public DataAction(BaseFacede baseFacede) { oQuery = new Data.Query(); }
@@ -184,10 +184,13 @@ namespace Orvis.Application.Base
             return (T)entity;
         }
 
-        private bool HasProcess(Entity entity, System.Reflection.PropertyInfo prop)
+        private bool HasProcess(Entity entity, System.Reflection.PropertyInfo prop, bool IDControl = true)
         {
-            if (prop.Name.Equals("ID"))
-                return false;
+            if (IDControl)
+            {
+                if (prop.Name.Equals("ID"))
+                    return false;
+            }
             if (prop.Name.Equals("Name") && !entity.HasName)
                 return false;
             if (prop.Name.Equals("UserCreated") && !entity.HasUserCreated)

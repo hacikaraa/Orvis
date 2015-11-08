@@ -44,11 +44,14 @@
     <Compile Include="Application\Base\DataAction.cs" />
     <Compile Include="Application\Base\Entity.cs" />
     <Compile Include="Application\Base\EntityList.cs" />
+    <Compile Include="Application\Base\SetEntity.cs" />
     <Compile Include="Application\Catalog\Facade.cs" />
     <Compile Include="Application\Corporation\Facade.cs" />
     <Compile Include="Application\Facede.cs" />
     <Compile Include="Application\Finance\Facade.cs" />
-    <Compile Include="Application\Framework\Facade.cs" />
+    <Compile Include="Application\Framework\Category.cs" />
+    <Compile Include="Application\Framework\CategoryList.cs" />
+    <Compile Include="Application\Framework\_Facade.cs" />
     <Compile Include="Application\Framework\Filter.cs" />
     <Compile Include="Application\Framework\FilterList.cs" />
     <Compile Include="Application\Member\Facade.cs" />
@@ -58,6 +61,7 @@
     <Compile Include="Application\Trading\Purchase\Facade.cs" />
     <Compile Include="Application\Trading\Sales\Facade.cs" />
     <Compile Include="Application\Transportation\Facade.cs" />
+    <Content Include="SQL.sql" />
     <Compile Include="Container.cs" />
     <Compile Include="Data\Facade.cs" />
     <Compile Include="Data\Query.cs" />

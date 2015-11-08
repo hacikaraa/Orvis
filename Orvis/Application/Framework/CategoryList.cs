@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Orvis.Application.Framework
 {
-    class Facade
+    public class CategoryList : Base.EntityList<Category>
     {
+
     }
 }

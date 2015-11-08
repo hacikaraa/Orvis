@@ -1,3 +1,4 @@
+C:\GIT\Orvis\Orvis.Web\obj\Debug\Orvis.Web.csprojResolveAssemblyReference.cache
 C:\GIT\Orvis\Orvis.Web\bin\roslyn\csc.exe
 C:\GIT\Orvis\Orvis.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\GIT\Orvis\Orvis.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -15,12 +16,14 @@ C:\GIT\Orvis\Orvis.Web\bin\Orvis.Web.dll
 C:\GIT\Orvis\Orvis.Web\bin\Orvis.Web.pdb
 C:\GIT\Orvis\Orvis.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\GIT\Orvis\Orvis.Web\bin\Microsoft.Web.Infrastructure.dll
+C:\GIT\Orvis\Orvis.Web\bin\Orvis.dll
 C:\GIT\Orvis\Orvis.Web\bin\System.Web.Helpers.dll
 C:\GIT\Orvis\Orvis.Web\bin\System.Web.Mvc.dll
 C:\GIT\Orvis\Orvis.Web\bin\System.Web.Razor.dll
 C:\GIT\Orvis\Orvis.Web\bin\System.Web.Webpages.Deployment.dll
 C:\GIT\Orvis\Orvis.Web\bin\System.Web.Webpages.dll
 C:\GIT\Orvis\Orvis.Web\bin\System.Web.Webpages.Razor.dll
+C:\GIT\Orvis\Orvis.Web\bin\Orvis.pdb
 C:\GIT\Orvis\Orvis.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\GIT\Orvis\Orvis.Web\bin\System.Web.Razor.xml
 C:\GIT\Orvis\Orvis.Web\bin\System.Web.Webpages.xml
@@ -28,8 +31,5 @@ C:\GIT\Orvis\Orvis.Web\bin\System.Web.Webpages.Deployment.xml
 C:\GIT\Orvis\Orvis.Web\bin\System.Web.Webpages.Razor.xml
 C:\GIT\Orvis\Orvis.Web\bin\System.Web.Helpers.xml
 C:\GIT\Orvis\Orvis.Web\bin\System.Web.Mvc.xml
-C:\GIT\Orvis\Orvis.Web\obj\Debug\Orvis.Web.csprojResolveAssemblyReference.cache
 C:\GIT\Orvis\Orvis.Web\obj\Debug\Orvis.Web.dll
 C:\GIT\Orvis\Orvis.Web\obj\Debug\Orvis.Web.pdb
-C:\GIT\Orvis\Orvis.Web\bin\Orvis.dll
-C:\GIT\Orvis\Orvis.Web\bin\Orvis.pdb
