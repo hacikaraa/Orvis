@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Orvis.Application.Framework
 {
-    public class FilterList : Base.EntityList<Filter>
+    public class Property : Base.Entity
     {
-
+      
+        public override void Configuration()
+        {
+            
+        }
     }
 }

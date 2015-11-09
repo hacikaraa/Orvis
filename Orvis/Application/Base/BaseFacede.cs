@@ -8,12 +8,12 @@ namespace Orvis.Application.Base
 {
     public abstract class BaseFacede
     {
-        private Base.DataAction data;
-        public Base.DataAction Data
+        private Data.DataAction data;
+        public Data.DataAction Data
         {
             get
             {
-                if (data == null) data = new DataAction(this);
+                if (data == null) data = new Data.DataAction(this);
                 return data;
             }
         }

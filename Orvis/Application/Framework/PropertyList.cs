@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orvis.Data
+namespace Orvis.Application.Framework
 {
-    class Facade
+    public class PropertyList : Base.EntityList<Property>
     {
+        
     }
 }

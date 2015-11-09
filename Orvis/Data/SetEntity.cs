@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orvis.Application.Base;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -6,15 +7,15 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orvis.Application.Base
+namespace Orvis.Data
 {
     public partial class DataAction
     {
         private string ObjectSql = "SELECT * FROM [TABLENAME] WHERE ID = [@ID]";
 
-        public List<T> GetEntity<T>(DataTable dt) where T : Application.Base.Entity, new()
+        public K GetEntities<T,K>(DataTable dt) where T : Entity, new() where K : EntityList<T> , new()
         {
-            List<T> list = new List<T>();
+            K list =  new K();
             try
             {
                 T obj;
@@ -50,7 +51,7 @@ namespace Orvis.Application.Base
             catch (Exception ex)
             {
                 Container.Exception(ex, "DataAction/GetEntity");
-                list = new List<T>();
+                list = new K();
             }
             return list;
         }

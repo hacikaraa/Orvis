@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orvis.Application.Base;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orvis.Application.Base
+namespace Orvis.Data
 {
     public partial class DataAction
     {
@@ -184,6 +185,150 @@ namespace Orvis.Application.Base
             return (T)entity;
         }
 
+        public K GetEntityList<T,K>(Data.Framework.SearchEngine search) where T : Entity, new() where K : EntityList<T>, new()
+        {
+            return this.GetEntities<T,K>(this.oQuery.GetDataTable(this.GetSql<T>(search, new T())));
+        }
+
+        public K GetEntityList<T,K>(string sql) where T : Entity, new() where K : EntityList<T>, new()
+        {
+            return this.GetEntities<T,K>(this.oQuery.GetDataTable(sql));
+        }
+
+        public K GetEntityList<T, K>(SqlCommand command) where T : Entity, new() where K : EntityList<T>, new()
+        {
+            return this.GetEntities<T, K>(this.oQuery.GetDataTable(command));
+        }
+
+        public DataTable GetDataTable(SqlCommand command)
+        {
+            return this.oQuery.GetDataTable(command);
+        }
+
+        public SqlCommand GetSql<T>(Data.Framework.SearchEngine search) where T : Entity, new()
+        {
+            return this.GetSql<T>(search, new T());
+        }
+
+        private SqlCommand GetSql<T>(Data.Framework.SearchEngine search, T entity) where T : Entity, new()
+        {
+            SqlCommand cmd = new SqlCommand();
+            string sql = "";
+            sql = "SELECT ";
+            if (search.ExistColumns.Count > 0)
+            {
+                foreach (var item in search.ExistColumns)
+                {
+                    if (item.IndexOf(".") == -1)
+                        sql += entity.DB_TableName + ".";
+                    sql += item;
+                    if (item != search.ExistColumns.Last())
+                        sql += ",";
+                }
+            }
+            else if (search.NonExistColumns.Count > 0)
+            {
+                var props = entity.GetType().GetProperties();
+                foreach (var prop in props)
+                {
+                    if (this.HasProcess(entity,prop,false))
+                    {
+                        if (!search.NonExistColumns.Contains(prop.Name))
+                        {
+                            sql += entity.DB_TableName + "." + prop.Name;
+                            if (this.IsReference(prop.PropertyType.FullName))
+                                sql += "ID";
+                            if (prop != props.Last())
+                                sql += ",";
+                        }
+                    }
+                }
+            }
+            else
+            {
+                var props = entity.GetType().GetProperties();
+                foreach (var prop in props)
+                {
+                    if (this.HasProcess(entity, prop, false))
+                    {
+                        sql += entity.DB_TableName + "." + prop.Name;
+                        if (this.IsReference(prop.PropertyType.FullName))
+                            sql += "ID";
+                        if (prop != props.Last())
+                            sql += ",";
+                    }
+                }
+            }
+
+            sql += " FROM " + entity.DB_TableName + " ";
+            
+            foreach (var item in search.Joins)
+            {
+                sql += " " + item + " ";
+            }
+
+            sql += " WHERE 1 = 1 ";
+            foreach (var item in search.Filters)
+            {
+                switch (item.Constraint)
+                {
+                    case Framework.FilterConstraint.OR:
+                        sql += " OR ";
+                        break;
+                    case Framework.FilterConstraint.AND:
+                    default:
+                        sql += " AND ";
+                        break;
+                }
+
+                sql += item.Column + " ";
+                
+                switch (item.Comparison)
+                {
+                    case Framework.FilterComparison.NonEquals:
+                        sql += " <> @" + item.Column.Replace(".", "_");
+                        cmd.Parameters.Add("@" + item.Column.Replace(".","_"), this.GetSQLType(item.Parameter.GetType().FullName)).Value = item.Parameter;
+                        break;
+                    case Framework.FilterComparison.Greater:
+                        sql += " > @" + item.Column.Replace(".", "_");
+                        cmd.Parameters.Add("@" + item.Column.Replace(".", "_"), this.GetSQLType(item.Parameter.GetType().FullName)).Value = item.Parameter;
+                        break;
+                    case Framework.FilterComparison.GreateEquals:
+                        sql += " >=  @" + item.Column.Replace(".", "_");
+                        cmd.Parameters.Add("@" + item.Column.Replace(".", "_"), this.GetSQLType(item.Parameter.GetType().FullName)).Value = item.Parameter;
+                        break;
+                    case Framework.FilterComparison.Small:
+                        sql += " <  @" + item.Column.Replace(".", "_");
+                        cmd.Parameters.Add("@" + item.Column.Replace(".", "_"), this.GetSQLType(item.Parameter.GetType().FullName)).Value = item.Parameter;
+                        break;
+                    case Framework.FilterComparison.SmallEquals:
+                        sql += " <=  @" + item.Column.Replace(".", "_");
+                        cmd.Parameters.Add("@" + item.Column.Replace(".", "_"), this.GetSQLType(item.Parameter.GetType().FullName)).Value = item.Parameter;
+                        break;
+                    case Framework.FilterComparison.In:
+                        sql += " IN ( " + item.Parameter + " ) ";
+                        break;
+                    case Framework.FilterComparison.NotIn:
+                        sql += " NOT IN ( " + item.Parameter + " ) ";
+                        break;
+                    case Framework.FilterComparison.Bettween:
+                        sql += " Between @" + item.Column.Replace(".", "_") + "_P1 AND @" + item.Column.Replace(".", "_") + "_P2 ";
+                        cmd.Parameters.Add("@" + item.Column.Replace(".", "_") + "_P1", this.GetSQLType(item.Parameter.GetType().FullName)).Value = item.Parameter;
+                        cmd.Parameters.Add("@" + item.Column.Replace(".", "_") + "_P2", this.GetSQLType(item.Parameter.GetType().FullName)).Value = item.Parameter2;
+                        break;
+                    case Framework.FilterComparison.Equals:
+                    default:
+                        sql += " = @" + item.Column.Replace(".", "_");
+                        cmd.Parameters.Add("@" + item.Column.Replace(".", "_"), this.GetSQLType(item.Parameter.GetType().FullName)).Value = item.Parameter;
+                        break;
+                }
+                sql += " ";
+            }
+
+            cmd.CommandText = sql;
+            return cmd;
+        }
+
         private bool HasProcess(Entity entity, System.Reflection.PropertyInfo prop, bool IDControl = true)
         {
             if (IDControl)
@@ -192,6 +337,8 @@ namespace Orvis.Application.Base
                     return false;
             }
             if (prop.Name.Equals("Name") && !entity.HasName)
+                return false;
+            if (prop.Name.Equals("Description") && !entity.HasDescription)
                 return false;
             if (prop.Name.Equals("UserCreated") && !entity.HasUserCreated)
                 return false;

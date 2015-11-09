@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Orvis.Application.Framework
 {
-    public class Filter : Base.Entity
+    public class PropertyValue : Base.Entity
     {
-        public string Parameter { get; set; }
+        public Property Property { get; set; }
 
+        public object Value { get; set; }
 
         public override void Configuration()
         {
-            throw new NotImplementedException();
+            this.HasName = false;
         }
     }
 }

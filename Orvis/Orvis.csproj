@@ -41,19 +41,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Base\BaseFacede.cs" />
-    <Compile Include="Application\Base\DataAction.cs" />
     <Compile Include="Application\Base\Entity.cs" />
     <Compile Include="Application\Base\EntityList.cs" />
-    <Compile Include="Application\Base\SetEntity.cs" />
     <Compile Include="Application\Catalog\Facade.cs" />
     <Compile Include="Application\Corporation\Facade.cs" />
     <Compile Include="Application\Facede.cs" />
     <Compile Include="Application\Finance\Facade.cs" />
     <Compile Include="Application\Framework\Category.cs" />
     <Compile Include="Application\Framework\CategoryList.cs" />
+    <Compile Include="Application\Framework\Property.cs" />
+    <Compile Include="Application\Framework\PropertyList.cs" />
+    <Compile Include="Application\Framework\PropertyValue.cs" />
     <Compile Include="Application\Framework\_Facade.cs" />
-    <Compile Include="Application\Framework\Filter.cs" />
-    <Compile Include="Application\Framework\FilterList.cs" />
+    <Compile Include="Data\Framework\Enums.cs" />
+    <Compile Include="Data\Framework\Filter.cs" />
+    <Compile Include="Data\Framework\FilterList.cs" />
     <Compile Include="Application\Member\Facade.cs" />
     <Compile Include="Application\Reporter\Facade.cs" />
     <Compile Include="Application\Stock\Facade.cs" />
@@ -61,10 +63,13 @@
     <Compile Include="Application\Trading\Purchase\Facade.cs" />
     <Compile Include="Application\Trading\Sales\Facade.cs" />
     <Compile Include="Application\Transportation\Facade.cs" />
-    <Content Include="SQL.sql" />
+    <Content Include="OrvisDataBase.sql" />
     <Compile Include="Container.cs" />
+    <Compile Include="Data\DataAction.cs" />
     <Compile Include="Data\Facade.cs" />
+    <Compile Include="Data\Framework\SearchEngine.cs" />
     <Compile Include="Data\Query.cs" />
+    <Compile Include="Data\SetEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Facade.cs" />
   </ItemGroup>

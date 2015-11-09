@@ -15,12 +15,15 @@ namespace Orvis.Application.Base
             this.HasDateUpdated = true;
             this.HasUserCreated = true;
             this.HasUserUpdated = true;
+            this.HasDescription = true;
             this.Configuration();
         }
 
         public int ID { get; set; }
 
         public string Name { get; set; }
+
+        public string Description { get; set; }
 
         public int UserCreated { get; set; }
 
@@ -52,6 +55,7 @@ namespace Orvis.Application.Base
         public abstract void Configuration();
 
         public bool HasName { get; set; }
+        public bool HasDescription { get; set; }
         public bool HasUserCreated { get; set; }
         public bool HasUserUpdated { get; set; }
         public bool HasDateCreated { get; set; }

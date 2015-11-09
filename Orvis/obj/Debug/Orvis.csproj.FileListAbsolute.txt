@@ -2,3 +2,4 @@ C:\GIT\Orvis\Orvis\bin\Debug\Orvis.dll
 C:\GIT\Orvis\Orvis\bin\Debug\Orvis.pdb
 C:\GIT\Orvis\Orvis\obj\Debug\Orvis.dll
 C:\GIT\Orvis\Orvis\obj\Debug\Orvis.pdb
+C:\GIT\Orvis\Orvis\obj\Debug\Orvis.csprojResolveAssemblyReference.cache
