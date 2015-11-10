@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace Orvis.Application.Framework
 {
-    public class Property : Base.Entity
-    {      
-        
+    public class ImageList : Base.EntityList<Image>
+    {
 
-        public override void Configuration()
-        {
-            
-        }
     }
 }

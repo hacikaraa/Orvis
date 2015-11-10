@@ -68,18 +68,6 @@ namespace Orvis.Application.Framework
             return this.Data.GetEntityList<Property, PropertyList>(search);
         }
 
-        public PropertyList GetItemProperties(int itemID, SearchEngine search = null)
-        {
-            if (search == null)
-                search = new SearchEngine();
-            search.ExistColumns.Add("Framework_Property.*");
-            search.ExistColumns.Add("Framework_PropertyValue.Value");
-            search.Joins.Add(" INNER JOIN Catalog_ItemProperty ON Framework_Property.ID = Catalog_ItemProperty.PropertyID ");
-            search.Joins.Add(" INNER JOIN Framework_PropertyValue ON Framework_PropertyValue.ID = Framework_Property.PropertyValueID ");
-            search.Filters.Add("Catalog_ItemProperty.ItemID", itemID);
-            return this.Data.GetEntityList<Property, PropertyList>(search);
-        }
-
         public PropertyValue CreatePropertyValue(PropertyValue propertyValue)
         {
             if (propertyValue != null && propertyValue.ID == 0 && propertyValue.Property != null && propertyValue.Value != null)
@@ -103,6 +91,39 @@ namespace Orvis.Application.Framework
             SearchEngine search = new SearchEngine();
             search.Filters.Add("PropertyID", propertyID);
             return this.Data.GetEntityObject<PropertyValue>(this.Data.GetDataTable(this.Data.GetSql<PropertyValue>(search)));
+        }
+
+        public PropertyValueList GetPropertyValues(SearchEngine search = null)
+        {
+            if (search == null)
+                search = new SearchEngine();
+            return this.Data.GetEntityList<PropertyValue, PropertyValueList>(search);
+        }
+
+        public Image CreateImage(Image image)
+        {
+            if (image != null && image.ID == 0 && ( !String.IsNullOrEmpty(image.Url) || !String.IsNullOrEmpty(image.ImageBase64)))
+                return this.Data.Insert<Image>(image);
+            return null;
+        }
+
+        public Image UpdateImage(Image image)
+        {
+            if (image != null && image.ID > 0 && (!String.IsNullOrEmpty(image.Url) || !String.IsNullOrEmpty(image.ImageBase64)))
+                return this.Data.Update<Image>(image);
+            return null;
+        }
+
+        public Image GetImage(int id)
+        {
+            return this.Data.GetEntityObject<Image>(id);
+        }
+
+        public ImageList GetImages(SearchEngine search = null)
+        {
+            if (search == null)
+                search = new SearchEngine();
+            return this.Data.GetEntityList<Image, ImageList>(search);
         }
 
     }

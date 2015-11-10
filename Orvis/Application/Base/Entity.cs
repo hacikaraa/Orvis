@@ -52,6 +52,16 @@ namespace Orvis.Application.Base
             }
         }
 
+        private Orvis.Application.Facede app;
+        public Orvis.Application.Facede Application
+        {
+            get
+            {
+                if (app == null) app = new Facede();
+                return app;
+            }
+        }
+
         public abstract void Configuration();
 
         public bool HasName { get; set; }

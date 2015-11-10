@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orvis.Application.Framework
+namespace Orvis.Application.Catalog
 {
-    public class Property : Base.Entity
-    {      
+    public class Manufacturer : Base.Entity
+    {
+        public Framework.Image Image { get; set; }
         
-
         public override void Configuration()
         {
             

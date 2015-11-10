@@ -27,5 +27,15 @@ namespace Orvis.Application
                 return framework;
             }
         }
+
+        private Finance.Facade finance;
+        public Finance.Facade Finance
+        {
+            get
+            {
+                if (finance == null) finance = new Application.Finance.Facade();
+                return finance;
+            }
+        }
     }
 }

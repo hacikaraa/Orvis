@@ -15,6 +15,7 @@ namespace Orvis.Application.Framework
         public override void Configuration()
         {
             this.HasName = false;
+            this.HasDescription = false;
         }
     }
 }
