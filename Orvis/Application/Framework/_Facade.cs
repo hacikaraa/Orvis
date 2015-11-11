@@ -126,5 +126,80 @@ namespace Orvis.Application.Framework
             return this.Data.GetEntityList<Image, ImageList>(search);
         }
 
+        public Language CreateLanguage(Language language)
+        {
+            if (language != null && language.ID == 0 && !String.IsNullOrEmpty(language.Name))
+            {
+                return this.Data.Insert<Language>(language);
+            }
+            return null;
+        }
+
+        public Language UpdateLanguage(Language language)
+        {
+            if (language != null && language.ID > 0 && !String.IsNullOrEmpty(language.Name))
+            {
+                return this.Data.Update<Language>(language);
+            }
+            return null;
+        }
+
+        public LanguageList GetLanguages(SearchEngine search = null)
+        {
+            if (search == null)
+                search = new SearchEngine();
+            return this.Data.GetEntityList<Language, LanguageList>(search);
+        }
+
+        public Parameter CreateParameter(Parameter parameter)
+        {
+            if (parameter != null && parameter.ID == 0 && !String.IsNullOrEmpty(parameter.Alias))
+            {
+                return this.Data.Insert<Parameter>(parameter);
+            }
+            return null;
+        }
+
+        public Parameter UpdateParameter(Parameter parameter)
+        {
+            if (parameter != null && parameter.ID > 0 && !String.IsNullOrEmpty(parameter.Alias))
+            {
+                return this.Data.Update<Parameter>(parameter);
+            }
+            return null;
+        }
+
+        public ParameterList GetParameters(SearchEngine search = null)
+        {
+            if (search == null)
+                search = new SearchEngine();
+            return this.Data.GetEntityList<Parameter, ParameterList>(search);
+        }
+
+        public ParameterValue CreateParameterValue(ParameterValue parameterValue)
+        {
+            if (parameterValue != null && parameterValue.ID == 0 && !String.IsNullOrEmpty(parameterValue.Value))
+            {
+                return this.Data.Insert<ParameterValue>(parameterValue);
+            }
+            return null;
+        }
+
+        public ParameterValue UpdateParameterValue(ParameterValue parameterValue)
+        {
+            if (parameterValue != null && parameterValue.ID > 0 && !String.IsNullOrEmpty(parameterValue.Value))
+            {
+                return this.Data.Update<ParameterValue>(parameterValue);
+            }
+            return null;
+        }
+
+        public ParameterValueList GetParameterValues(SearchEngine search = null)
+        {
+            if (search == null)
+                search = new SearchEngine();
+            return this.Data.GetEntityList<ParameterValue, ParameterValueList>(search);
+        }
+
     }
 }

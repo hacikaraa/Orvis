@@ -124,3 +124,44 @@ CREATE TABLE Catalog_ItemCategory
 	ItemID int references Catalog_Item(ID), 
 	TaxID int references Framework_Category(ID)
 )
+--language
+CREATE TABLE Framework_Language
+(
+	ID int primary key identity(1,1),
+	Name varchar(200),
+	Code varchar(200),
+	DateCreated datetime,
+	DateUpdated datetime,
+	UserCreated int,
+	UserUpdated int
+)
+--ParameterValue
+CREATE TABLE Framework_ParemeterValue
+(
+	ID int primary key identity(1,1),
+	Value varchar(500),
+	DateCreated datetime,
+	DateUpdated datetime,
+	UserCreated int,
+	UserUpdated int,
+	LanguageID int references Framework_Language(ID)
+)
+--parameter
+CREATE TABLE Framework_Parameter
+(
+	ID int primary key identity(1,1),
+	Alias varchar(256),
+	DateCreated datetime,
+	DateUpdated datetime,
+	UserCreated int,
+	UserUpdated int
+)
+--ParameterParameterValue
+CREATE TABLE Framework_ParameterParameterValue
+(
+	ID int primary key identity(1,1),
+	ParameterID int references Framework_Parameter(ID),
+	ParemeterValueID int references Framework_ParemeterValue(ID)
+)
+
+
