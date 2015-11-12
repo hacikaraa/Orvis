@@ -16,6 +16,7 @@ namespace Orvis.Application.Base
             this.HasUserCreated = true;
             this.HasUserUpdated = true;
             this.HasDescription = true;
+            this.CanBeDeleted = false;
             this.Configuration();
         }
 
@@ -70,6 +71,7 @@ namespace Orvis.Application.Base
         public bool HasUserUpdated { get; set; }
         public bool HasDateCreated { get; set; }
         public bool HasDateUpdated { get; set; }
+        public bool CanBeDeleted { get; set; }
 
     }
 }

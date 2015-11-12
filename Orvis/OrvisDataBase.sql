@@ -7,6 +7,7 @@
 	--DateUpdated datetime,
 	--UserCreated int,
 	--UserUpdated int,
+	--IsDeleted bit,
 	
 
 --Category
@@ -18,6 +19,7 @@ CREATE TABLE Framework_Category
 	DateUpdated datetime,
 	UserCreated int,
 	UserUpdated int,
+	IsDeleted bit,
 	BaseCategoryID int references Framework_Category(ID)
 )
 --Property
@@ -28,7 +30,8 @@ CREATE TABLE Framework_Property
 	DateCreated datetime,
 	DateUpdated datetime,
 	UserCreated int,
-	UserUpdated int
+	UserUpdated int,
+	IsDeleted bit
 )
 --PropertyValue
 CREATE TABLE Framework_PropertyValue
@@ -39,6 +42,7 @@ CREATE TABLE Framework_PropertyValue
 	DateUpdated datetime,
 	UserCreated int,
 	UserUpdated int,
+	IsDeleted bit,
 	PropertyID int references Framework_Property(ID)
 )
 --Image
@@ -49,6 +53,7 @@ CREATE TABLE Framework_Image
 	DateUpdated datetime,
 	UserCreated int,
 	UserUpdated int,
+	IsDeleted bit,
 	Url varchar(500),
 	ImageBase64 varchar(max)
 )
@@ -62,6 +67,7 @@ CREATE TABLE Catalog_Item
 	DateUpdated datetime,
 	UserCreated int,
 	UserUpdated int,
+	IsDeleted bit,
 	Code varchar(200),
 	SecondName varchar(200),
 	WarningText varchar(200),
@@ -104,6 +110,7 @@ CREATE TABLE Catalog_Manufacturer
 	DateUpdated datetime,
 	UserCreated int,
 	UserUpdated int,
+	IsDeleted bit,
 	ImageID int references Framework_Image(ID) 
 )
 --Tax
@@ -115,6 +122,7 @@ CREATE TABLE Finance_Tax
 	DateUpdated datetime,
 	UserCreated int,
 	UserUpdated int,
+	IsDeleted bit,
 	Rate float
 )
 --Catalog_ItemTax
@@ -133,7 +141,8 @@ CREATE TABLE Framework_Language
 	DateCreated datetime,
 	DateUpdated datetime,
 	UserCreated int,
-	UserUpdated int
+	UserUpdated int,
+	IsDeleted bit
 )
 --ParameterValue
 CREATE TABLE Framework_ParemeterValue
@@ -144,6 +153,7 @@ CREATE TABLE Framework_ParemeterValue
 	DateUpdated datetime,
 	UserCreated int,
 	UserUpdated int,
+	IsDeleted bit,
 	LanguageID int references Framework_Language(ID)
 )
 --parameter
@@ -154,7 +164,8 @@ CREATE TABLE Framework_Parameter
 	DateCreated datetime,
 	DateUpdated datetime,
 	UserCreated int,
-	UserUpdated int
+	UserUpdated int,
+	IsDeleted bit
 )
 --ParameterParameterValue
 CREATE TABLE Framework_ParameterParameterValue

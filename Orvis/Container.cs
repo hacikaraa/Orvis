@@ -12,6 +12,11 @@ namespace Orvis
 
         public static bool CanBeConfigured { get; set; }
 
+        public static Application.Framework.ParameterList Parameters { get; set; }
+
+        public static Application.Framework.LanguageList Languages { get; set; }
+      
+
         public static void Exception(Exception ex,string Data)
         {
             if (CanBeConfigured)

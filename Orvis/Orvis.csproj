@@ -50,6 +50,7 @@
     <Compile Include="Application\Catalog\ManufacturerList.cs" />
     <Compile Include="Application\Corporation\Facade.cs" />
     <Compile Include="Application\Facede.cs" />
+    <Compile Include="Application\Instances.cs" />
     <Compile Include="Application\Finance\Facade.cs" />
     <Compile Include="Application\Finance\Tax.cs" />
     <Compile Include="Application\Finance\TaxList.cs" />
@@ -60,7 +61,9 @@
     <Compile Include="Application\Framework\Language.cs" />
     <Compile Include="Application\Framework\LanguageList.cs" />
     <Compile Include="Application\Framework\Parameter.cs" />
-    <Compile Include="Application\Framework\ParemeterList.cs" />
+    <Compile Include="Application\Framework\ParameterValue.cs" />
+    <Compile Include="Application\Framework\ParameterValueList.cs" />
+    <Compile Include="Application\Framework\ParameterList.cs" />
     <Compile Include="Application\Framework\Property.cs" />
     <Compile Include="Application\Framework\PropertyList.cs" />
     <Compile Include="Application\Framework\PropertyValue.cs" />

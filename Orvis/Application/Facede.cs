@@ -3,39 +3,55 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Orvis.Application.Framework;
 
 namespace Orvis.Application
 {
-    public class Facede
+    public partial class Facede
     {
-        private Catalog.Facade catalog;
-        public Catalog.Facade Catalog
+        public Facede()
         {
-            get
-            {
-                if (catalog == null) catalog = new Application.Catalog.Facade();
-                return catalog;
-            }
+            this.BindStaticValues();
         }
 
-        private Framework.Facade framework;
-        public Framework.Facade Framework
+        public Language ActiveLanguage { get; set; }
+
+        public string GetTitle(string alias)
         {
-            get
+            Parameter p = Container.Parameters.Where(w => w.Alias == alias).FirstOrDefault();
+            if (p == null)
             {
-                if (framework == null) framework = new Application.Framework.Facade();
-                return framework;
+                p = new Parameter();
+                p.Alias = alias;
+                foreach (var lang in Container.Languages)
+                    p.Values.Add(alias, lang);
+                this.framework.CreateParameter(p);
+                Container.Parameters.Add(p);
             }
+            return p.Values.Where(w=>w.Language.ID == this.ActiveLanguage.ID).FirstOrDefault().Value;
         }
 
-        private Finance.Facade finance;
-        public Finance.Facade Finance
+        public void BindStaticValues()
         {
-            get
+            if (Container.Languages == null)
             {
-                if (finance == null) finance = new Application.Finance.Facade();
-                return finance;
+                Container.Languages = this.Framework.GetLanguages();
             }
+            if (Container.Parameters == null)
+            {
+                Container.Parameters = this.Framework.GetParameters();
+            }
+
+            #if DEBUG
+                Container.CanBeConfigured = true;
+            #else
+                Container.CanBeConfigured = false;
+            #endif
+
         }
+
+
+
+
     }
 }
