@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orvis.Application.Trading.Sales
+namespace Orvis.Application.Trading.Purchase
 {
-    class Facade
+    class SalesInvoiceItemList
     {
     }
 }
