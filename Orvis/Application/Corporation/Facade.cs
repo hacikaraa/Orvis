@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Orvis.Application.Corporation
 {
-    class Facade
+    public class Facade : Base.BaseFacede
     {
+
     }
 }

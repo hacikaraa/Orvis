@@ -18,6 +18,8 @@ namespace Orvis.Data
 
         private string InsertSqlWithOutput = "INSERT INTO [TABLENAME]([COLUMNS]) VALUES([VALUES]) SELECT SCOPE_IDENTITY()";
         private string UpdateSql = "UPDATE [TABLENAME] SET [VALUES] WHERE [WHERE]";
+        private string DeleteUpdateSql = "UPDATE [TABLENAME] SET IsDeleted = 1 WHERE [WHERE]";
+        private string DeleteSql = "DELETE FROM [TABLENAME] WHERE [WHERE]";
 
         private bool IsReference(string propName)
         {
@@ -32,12 +34,13 @@ namespace Orvis.Data
             string tempParameter = "";
             List<System.Reflection.PropertyInfo> listProps = new List<PropertyInfo>();
             SqlCommand cmd = new SqlCommand();
+            string nextFunction = "";
             foreach (var prop in entity.GetType().GetProperties())
             {
                 if (this.HasProcess(entity, prop))
                 {
                     var data = prop.GetValue(entity, null);
-                    if (data != null)
+                    if (data != null || (data.GetType().FullName.Contains("System.Int") && !data.Equals(0)) )
                     {
                         if (this.IsReference(prop.PropertyType.FullName))
                             columns += "[" + prop.Name + "ID],";
@@ -53,11 +56,12 @@ namespace Orvis.Data
                             {
                                 var newdata = data.GetType().GetProperty("ID").GetValue(data, null);
                                 if (Convert.ToInt32(newdata) == 0)
-                                {
-                                    MethodInfo generic = this.GetType().GetMethod("Insert").MakeGenericMethod(Type.GetType(prop.PropertyType.FullName));
-                                    var returnValue = generic.Invoke(this, new object[] { prop.GetValue(entity, null) });
-                                    prop.SetValue(entity, returnValue, null);
-                                }
+                                    nextFunction = "Insert";
+                                else
+                                    nextFunction = "Update";
+                                MethodInfo generic = this.GetType().GetMethod(nextFunction).MakeGenericMethod(Type.GetType(prop.PropertyType.FullName));
+                                var returnValue = generic.Invoke(this, new object[] { prop.GetValue(entity, null) });
+                                prop.SetValue(entity, returnValue, null);
                                 cmd.Parameters.Add(tempParameter, System.Data.SqlDbType.Int).Value = data.GetType().GetProperty("ID").GetValue(data, null);
                             }
                             else
@@ -73,6 +77,12 @@ namespace Orvis.Data
                             listProps.Add(prop);
                     }
                 }
+            }
+
+            if (!entity.CanBeDeleted)
+            {
+                columns += "[IsDeleted],";
+                values += "0,";
             }
 
             columns = columns.Substring(0, columns.Length - 1);
@@ -185,14 +195,42 @@ namespace Orvis.Data
             return (T)entity;
         }
 
-        public K GetEntityList<T,K>(Data.Framework.SearchEngine search) where T : Entity, new() where K : EntityList<T>, new()
+        public bool Delete(Entity entity)
         {
-            return this.GetEntities<T,K>(this.oQuery.GetDataTable(this.GetSql<T>(search, new T())));
+            string sql = "";
+            if (entity.CanBeDeleted)
+                sql = this.DeleteSql;
+            else
+                sql = this.DeleteUpdateSql;
+            sql = sql.Replace("[TABLENAME]", entity.DB_TableName);
+            string tempsql = "";
+            foreach (var prop in entity.GetType().GetProperties())
+            {
+                if (prop.PropertyType.Name.Contains("List") && prop.PropertyType.FullName.Contains("Orvis"))
+                {
+                    IList oTheList = prop.GetValue(entity, null) as IList;
+                    for (int i = 0; i < oTheList.Count; i++)
+                    {
+                        if (prop.GetValue(entity, null) != null)
+                        {
+                            tempsql = "DELETE FROM " + entity.DB_TableName + oTheList[0].GetType().Name + " WHERE " + entity.GetType().Name + "ID = " + entity.ID;
+                            this.oQuery.ExecuteNonQuery(tempsql);
+                        }
+                    }
+                }
+            }
+            sql = sql.Replace("[WHERE]", " ID = " + entity.ID);
+            return this.oQuery.ExecuteNonQuery(sql);
         }
 
-        public K GetEntityList<T,K>(string sql) where T : Entity, new() where K : EntityList<T>, new()
+        public K GetEntityList<T, K>(Data.Framework.SearchEngine search) where T : Entity, new() where K : EntityList<T>, new()
         {
-            return this.GetEntities<T,K>(this.oQuery.GetDataTable(sql));
+            return this.GetEntities<T, K>(this.oQuery.GetDataTable(this.GetSql<T>(search, new T())));
+        }
+
+        public K GetEntityList<T, K>(string sql) where T : Entity, new() where K : EntityList<T>, new()
+        {
+            return this.GetEntities<T, K>(this.oQuery.GetDataTable(sql));
         }
 
         public K GetEntityList<T, K>(SqlCommand command) where T : Entity, new() where K : EntityList<T>, new()
@@ -231,7 +269,7 @@ namespace Orvis.Data
                 var props = entity.GetType().GetProperties();
                 foreach (var prop in props)
                 {
-                    if (this.HasProcess(entity,prop,false))
+                    if (this.HasProcess(entity, prop, false))
                     {
                         if (!search.NonExistColumns.Contains(prop.Name))
                         {
@@ -261,13 +299,18 @@ namespace Orvis.Data
             }
 
             sql += " FROM " + entity.DB_TableName + " ";
-            
+
             foreach (var item in search.Joins)
             {
                 sql += " " + item + " ";
             }
 
-            sql += " WHERE 1 = 1 ";
+            sql += " WHERE ";
+            if (entity.CanBeDeleted)
+                sql += " 1 = 1 ";
+            else
+                sql += " IsDeleted = 0 ";
+
             foreach (var item in search.Filters)
             {
                 switch (item.Constraint)
@@ -282,12 +325,12 @@ namespace Orvis.Data
                 }
 
                 sql += item.Column + " ";
-                
+
                 switch (item.Comparison)
                 {
                     case Framework.FilterComparison.NonEquals:
                         sql += " <> @" + item.Column.Replace(".", "_");
-                        cmd.Parameters.Add("@" + item.Column.Replace(".","_"), this.GetSQLType(item.Parameter.GetType().FullName)).Value = item.Parameter;
+                        cmd.Parameters.Add("@" + item.Column.Replace(".", "_"), this.GetSQLType(item.Parameter.GetType().FullName)).Value = item.Parameter;
                         break;
                     case Framework.FilterComparison.Greater:
                         sql += " > @" + item.Column.Replace(".", "_");
