@@ -1,6 +1,6 @@
 C:\GIT\Orvis\Orvis.Service\bin\Orvis.Service.dll.config
 C:\GIT\Orvis\Orvis.Service\bin\Orvis.Service.dll
 C:\GIT\Orvis\Orvis.Service\bin\Orvis.Service.pdb
+C:\GIT\Orvis\Orvis.Service\obj\Debug\Orvis.Service.csprojResolveAssemblyReference.cache
 C:\GIT\Orvis\Orvis.Service\obj\Debug\Orvis.Service.dll
 C:\GIT\Orvis\Orvis.Service\obj\Debug\Orvis.Service.pdb
-C:\GIT\Orvis\Orvis.Service\obj\Debug\Orvis.Service.csprojResolveAssemblyReference.cache
