@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orvis
+namespace Orvis.Application.Transportation
 {
-    public class Class1
-    {
-    }
+    
 }
